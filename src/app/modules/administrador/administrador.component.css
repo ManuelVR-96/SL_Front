@@ -1,0 +1,13 @@
+.alert {
+    font-weight: bold;
+    margin: 0px auto;
+    margin-top: 0px;
+    margin-bottom: 2px;
+    max-height: 30px;
+    max-width: 400px;
+    text-align: center;
+}
+
+.alert p {
+    line-height: 20%;
+}

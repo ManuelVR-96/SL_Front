@@ -1,0 +1,90 @@
+.active-link {
+    color:red;
+}
+
+a{  
+    color: inherit;
+    text-decoration: none;
+}
+
+button {
+    margin-right: 5px;
+}
+
+body {
+    background-color: #DCE1E3;
+}
+
+.bodybg-color {
+    background-color: red;
+}
+
+.buttonContainer {
+    justify-content: flex-end;
+    position: absolute;
+    right: 0px;
+}
+
+.container {
+    /* background-image: url("src/assets/19366.jpg");
+    background-repeat:no-repeat;
+    background-size:cover; */
+    background: rgb(23,166,195);
+    background: linear-gradient(90deg, rgba(23,166,195,1) 0%, rgba(217,217,219,1) 52%, rgba(23,166,195,1) 100%);
+    min-height: 100%;
+    min-width: 100%;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.example-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+.flexExpand {
+    flex: 1 1 auto;
+}
+
+
+.header, .footer{
+    background-color:#200580;
+    box-shadow: gray 5px;
+    color:white;
+    margin-left: 0px;
+    min-width: 100vw;
+    justify-content: space-between;
+}
+
+.footer {
+    bottom: 0px;
+    display: flex;
+    flex-direction: row;
+    position: fixed;
+    text-align: center;
+}
+
+.interesButton {
+    background-color:darkblue;
+    margin-left: 0px;
+}
+
+.logoutButton {
+    margin-right: 0px;
+}
+
+
+.toolbar {
+    height: 200px;
+    padding-bottom: 0px;
+}
+
+main {
+    overflow-y: hidden;
+  }

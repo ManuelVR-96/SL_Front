@@ -1,0 +1,15 @@
+.none {
+    display: none;
+    visibility: hidden;
+}
+
+.notAsigned {
+    font-size: large;
+    text-align: center;
+}
+
+.tabla {
+    display: flex;
+    flex-direction: column;
+}
+

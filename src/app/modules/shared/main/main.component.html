@@ -1,0 +1,39 @@
+    
+    <mat-toolbar class="header">
+        <h1><a routerLink="/">SALUD LEGAL</a> </h1>
+        <span class="flexExpand"></span>
+        <div class="button-container">
+            <button mat-button [matMenuTriggerFor]="menuAgendas" *ngIf="currentUser.idRol==1"> <span class="material-icons">calendar_today</span> Agendas</button>
+                <mat-menu #menuAgendas="matMenu" >
+                <button mat-menu-item routerLink="/admin/agendar" [routerLinkActive]="'active-link'" >Abrir agenda</button>
+                <button mat-menu-item routerLink="/admin/consultarAgendas" [routerLinkActive]="'active-link'">Consultar Agendas </button>
+            </mat-menu>
+            <button mat-button [matMenuTriggerFor]="menuCitas" > <span class="material-icons">
+                medication</span>Citas
+            </button>
+                <mat-menu #menuCitas="matMenu">
+                <button mat-menu-item routerLink="/admin/pendientes" [routerLinkActive]="'active-link'" *ngIf="currentUser.idRol==1" >Citas Pendientes</button>
+                <button mat-menu-item routerLink="/operario/nuevaCita" [routerLinkActive]="'active-link'" *ngIf="currentUser.idRol==2">Agregar Citas</button>
+                <button mat-menu-item routerLink="/operario/citasCliente" [routerLinkActive]="'active-link'" *ngIf="currentUser.idRol==2">Consulta Citas</button>
+            </mat-menu>
+            <button mat-button [matMenuTriggerFor]="menuConfig" *ngIf="currentUser.idRol==1"> <span class="material-icons">
+                manage_accounts</span> Configuración
+            </button>
+                <mat-menu #menuConfig="matMenu">
+                <button mat-menu-item routerLink="/admin/sintomas" [routerLinkActive]="'active-link'">Añadir síntomas</button>
+                <button mat-menu-item routerLink="/admin/cuotas" [routerLinkActive]="'active-link'">Cuotas</button>
+            </mat-menu>
+            <button mat-button class="logoutButton" (click)="logout()"><span class="material-icons">
+                logout
+                </span>Logout</button>
+        </div>
+        <!-- <button mat-button routerLink="/admin/agendar" [routerLinkActive]="'active-link'">Abrir Agenda</button>
+        <button mat-button routerLink="/admin/sintomas" [routerLinkActive]="'active-link'">Añadir nuevo síntoma</button> -->
+    </mat-toolbar>
+
+    <mat-toolbar class="footer">
+        <p>&copy; SaludLegal.com 2021</p>
+    </mat-toolbar>
+
+
+<router-outlet></router-outlet>

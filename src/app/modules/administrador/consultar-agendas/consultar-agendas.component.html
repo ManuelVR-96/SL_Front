@@ -1,0 +1,48 @@
+
+    <div class="contenedor">
+      <h1>Consulta Agendas <span class="material-icons md-48 ml-2">search</span></h1>
+        <form [formGroup]="form" (ngSubmit)="onSubmit($event)">
+          <mat-form-field>
+              <mat-label>Centro Médico</mat-label>
+              <mat-select formControlName="idCentroMedico">
+                <mat-option *ngFor="let cm of listaCentros" [value]="cm.idCentroMedico">
+                  {{cm.nombreCentroMedico}}
+                </mat-option>
+              </mat-select>
+          </mat-form-field>
+          <div *ngIf="form.get('idCentroMedico').hasError('required') && form.get('idCentroMedico').touched " class="alert alert-danger" role="alert">
+            <p>Seleccione un centro médico</p>
+          </div>
+          <mat-form-field>
+              <mat-label>Médico</mat-label>
+              <mat-select formControlName="idMedico" [disabled]="form.get('idCentroMedico').hasError('required')">
+                <mat-option *ngFor="let medico of listaMedicos" [value]="medico.idMedico">
+                  {{medico.nombre}} {{medico.apellidos }} - {{medico.nombreEspecialidad}}
+                </mat-option>
+              </mat-select>
+          </mat-form-field>
+          <div *ngIf="form.get('idMedico').hasError('required') && form.get('idMedico').touched " class="alert alert-danger" role="alert">
+            <p>Seleccione un médico</p>
+          </div>
+    
+          <!-- <button mat-raised-button color="primary" [disabled]="!form.valid" type="submit" class="btn btn-primary" style="display: block;">Abrir Agenda</button> -->
+        </form>
+    </div>
+
+    <div class="contenedor">
+        <ul>
+            <li *ngFor="let agenda of listaAgendas | paginate: { itemsPerPage: 5, currentPage: page }">
+                <mat-card>{{agenda.fechaAgenda | date : 'longDate' | translateDate}} 
+                     <button class="btn-detalles" mat-flat-button color="primary" (click)="openTurnos(agenda.idAgenda)">Ver Detalles</button></mat-card> 
+            </li>
+        </ul>
+        <pagination-controls 
+            (pageChange)="page = $event"
+            responsive="true"
+            previousLabel="Previous"
+            nextLabel="Next"
+        ></pagination-controls>
+    </div>
+
+    
+  

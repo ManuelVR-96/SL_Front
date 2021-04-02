@@ -1,0 +1,92 @@
+.button-container {
+    bottom: 30px;
+    position: relative;
+}
+
+.contenedor { 
+    margin-bottom: 15px;
+    max-width: 50%vw;
+}
+
+.citaCard {
+    background-color: #e6f0ff;
+    border: #0869fa solid 1px;
+    border-radius: 10px;
+    box-shadow: #555758 100px, 10px, 10px, 10px;
+    color: #0869fa;
+    font-style: italic;
+    font-weight: bold;
+    max-width: 300px;
+    max-height: 120px;
+    margin-left: 20px;
+    margin-right: 0px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-left: 20px;
+}
+
+.formulario-container {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+    padding: 5px;   
+}
+
+li {
+    list-style: none;
+    margin-bottom: 5px;
+}
+
+.ngx-pagination {
+    color: black;
+}
+
+.not-found {
+    color: gray;
+    font-size:30px;
+    font-style: italic;
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    /* margin-top: 120px; */
+    transform: translate(-50%, -50%);
+    position: relative;
+    text-align: center;
+}
+
+.not-found img{
+    max-height: 10%;
+    max-width: 10%;
+}
+
+.not-found p{
+    font-size: 30px;
+    margin-top: 50px;
+}
+
+
+mat-form-field {
+    width: 400px;
+}
+
+p {
+    font-size : 13px;
+    padding : 0;
+    margin : 0;
+    line-height : 20px;
+}
+
+.search-button {
+    position: relative;
+    right: calc(-80%);
+}
+
+ul {
+    display: grid;
+    column-gap: 0px;
+    grid-template-columns: repeat(3,30%);
+    margin: 0px auto;
+    padding: 0px;
+    width: 1200px;
+}

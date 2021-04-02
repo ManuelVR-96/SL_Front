@@ -1,0 +1,56 @@
+<div class="container">
+    <form [formGroup]="form" class="formulario-container" (ngSubmit)="onSubmit()">
+      <h1>Buscar cita  <span class="material-icons md-48 ml-2 mb-0">list_alt</span> </h1>
+        <mat-form-field>
+            <mat-label>Cédula del Paciente: </mat-label>
+            <input matInput
+                type="text"
+                formControlName="cedulaPaciente"
+            >
+        </mat-form-field>
+    
+        <div *ngIf="form.get('cedulaPaciente').hasError('pattern')" class="alert alert-danger" role="alert">
+          <p>Caracter ingresado no es válido para una cédula</p>
+        </div>
+        <div *ngIf="form.get('cedulaPaciente').hasError('required') && form.get('cedulaPaciente').touched " class="alert alert-danger" role="alert">
+            <p>Diligencie la cédula del paciente</p>
+          </div>
+        
+        <button mat-raised-button color="primary" [disabled]="!form.valid" type="submit" class="btn btn-primary mb-2" style="display: block;">Buscar citas</button>
+    </form>
+</div>
+
+<div *ngIf="citasPaciente.length==0 && solicitado else citas" class="not-found">
+    <img class="not-found-image" src="assets/empty.png"/>
+    <p>No hay citas agendadas para este paciente</p>
+</div>
+<ng-template #citas>
+    <div  class="contenedor">
+        <ul>
+            <li *ngFor="let cita of citasPaciente | paginate: { itemsPerPage: 6, currentPage: page }">
+                <mat-card class="mb-2 citaCard"> 
+                    <mat-card-content class="card-content">
+                        <p *ngIf="!cita.fechaCita">Fecha: No agendada</p>
+                        <p *ngIf="cita.fechaCita">{{cita.fechaCita}}</p>
+                        <p>Lugar: {{cita.centroMedicoNombre}}</p>
+                        <p>{{cita.especialidadDesc}}</p>
+                        <p *ngIf="!cita.fechaCita">Médico: No asignado</p>
+                        <p *ngIf="cita.nombreMedico">Médico: {{cita.nombreCompleto}}</p>
+                        <p *ngIf="cita.valorCuota">Costo : {{cita.valorCuota}}</p>
+                        <div class="button-container">
+                            <button class="search-button btn-primary" (click)="cancelar(cita.idCita, cita.idTurno)"><span class="material-icons" title="Cancelar">
+                                cancel
+                                </span></button>
+                        </div>
+                      </mat-card-content>
+                </mat-card> 
+            </li>
+        </ul>
+    </div>
+    <pagination-controls *ngIf="citasPaciente"
+        (pageChange)="page = $event"
+        responsive="true"
+        previousLabel="Previous"
+        nextLabel="Next"
+    ></pagination-controls>
+</ng-template>

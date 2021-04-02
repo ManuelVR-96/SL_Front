@@ -1,0 +1,33 @@
+<form [formGroup]="form" class="formulario-container" (ngSubmit)="onSubmit($event)">
+    <h1>Modificar cuotas <span class="material-icons md-48 ml-3">change_circle</span></h1>
+    <mat-form-field appearance="fill">
+        <mat-label>Tipo de cita </mat-label>
+        <mat-select formControlName="idTipoCita">
+          <mat-option *ngFor="let tipoCita of listaTipoCitas" [value]="tipoCita.idTipoCita">{{tipoCita.descTipoCita}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <div *ngIf="form.get('idTipoCita').hasError('required') && form.get('idTipoCita').touched " class="alert alert-danger"  role="alert">
+        <p>Seleccione un tipo de cita</p>
+      </div>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Tipo de Contrato </mat-label>
+        <mat-select formControlName="idTipoContrato">
+          <mat-option *ngFor="let tipoContrato of listaTipoContratos" [value]="tipoContrato.idTipoContrato">{{tipoContrato.nombreContrato}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <div *ngIf="form.get('idTipoContrato').hasError('required') && form.get('idTipoContrato').touched " class="alert alert-danger"  role="alert">
+        <p>Seleccione un tipo de contrato</p>
+      </div>
+
+    <mat-form-field>
+        <mat-label>Nuevo valor de la cuota: </mat-label>
+        <input matInput
+            type="number"
+            formControlName="valorCuotaModeradora"
+        >
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" [disabled]="!form.valid" type="submit" class="btn btn-primary" style="display: block;">Modificar Cuota</button>
+</form>

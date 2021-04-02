@@ -1,0 +1,52 @@
+<div class="container">
+  <form [formGroup]="form" class="formulario-container" (ngSubmit)="onSubmit($event)" #formDirective="ngForm">
+    <h1>Nueva cita <span class="material-icons md-48 ml-2 mb-0">list_alt</span> </h1>
+      <mat-form-field>
+          <mat-label>Cédula del Paciente: </mat-label>
+          <input matInput
+              type="text"
+              formControlName="cedulaPaciente"
+          >
+      </mat-form-field>
+  
+      <div *ngIf="form.get('cedulaPaciente').hasError('pattern')" class="alert alert-danger" role="alert">
+        <p>Caracter ingresado no es válido para una cédula</p>
+      </div>
+      <div *ngIf="form.get('cedulaPaciente').hasError('required') && form.get('cedulaPaciente').touched " class="alert alert-danger" role="alert">
+        <p>Diligencie la cédula del paciente</p>
+      </div>
+  
+      <mat-form-field appearance="fill">
+          <mat-label>Síntoma : </mat-label>
+          <mat-select formControlName="sintoma" [disabled]="!form.get('cedulaPaciente').valid">
+            <mat-option *ngFor="let sintoma of listaSintomas" [value]="sintoma.idSintomatologia">{{sintoma.descripcion}}</mat-option>
+          </mat-select>
+      </mat-form-field>
+      <div *ngIf="form.get('sintoma').hasError('required') && form.get('sintoma').touched " class="alert alert-danger" role="alert">
+        <p>Debe seleccionar un síntoma</p>
+      </div>
+  
+      <mat-form-field appearance="fill">
+          <mat-label>Especialidades Asociadas: </mat-label>
+          <mat-select formControlName="especialidad" [disabled]="!form.get('sintoma').valid">
+            <mat-option *ngFor="let especialidad of listaEspecialidades" [value]="especialidad.idEspecialidad">{{especialidad.descripcionEspecialidad}}</mat-option>
+          </mat-select>
+      </mat-form-field>
+      <div *ngIf="form.get('especialidad').hasError('required') && form.get('especialidad').touched " class="alert alert-danger" role="alert">
+        <p>Debe seleccionar una especialidad</p>
+      </div>
+  
+      <mat-form-field appearance="fill">
+          <mat-label>Tipo Cita: </mat-label>
+          <mat-select formControlName="tipoCita" [disabled]="!form.get('especialidad').valid">
+            <mat-option *ngFor="let tipo of listaTipoCitas" [value]="tipo.idTipoCita">{{tipo.descTipoCita}}</mat-option>
+          </mat-select>
+      </mat-form-field>
+
+      <div *ngIf="form.get('tipoCita').hasError('required') && form.get('tipoCita').touched " class="alert alert-danger" role="alert">
+        <p>Debe seleccionar una especialidad</p>
+      </div>
+  
+      <button mat-raised-button color="primary" [disabled]="!form.valid" type="submit" class="btn btn-primary" style="display: block;">Agendar Cita</button>
+  </form>
+</div>

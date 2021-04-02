@@ -1,0 +1,47 @@
+<table class=table>
+    <thead>
+        <th>Hora</th>
+        <th>Paciente</th>
+        <th>Tipo Cita</th>
+        <th>Cuota</th>
+        <th>Nivel de prioridad</th>
+    </thead>
+    <tr *ngFor="let turno of listaTurnos">
+        <td>{{turno.fechaTurno | date:"shortTime"}}</td>
+        <td><p *ngIf="turno.citaDTO else alternative">{{turno.citaDTO.nombrePaciente}} {{turno.citaDTO.apellidosPaciente}}</p></td>
+        <td><p *ngIf="turno.citaDTO else alternative">{{turno.citaDTO.tipoCita}}</p></td>
+        <td><p *ngIf="turno.citaDTO else alternative">{{turno.citaDTO.valorCuota}}</p></td>
+        <td >
+            <p *ngIf="turno.citaDTO else alternative" [ngClass]="{'none':!(turno.citaDTO.prioridad > 80)}">
+                <button 
+                    *ngIf="turno.citaDTO else alternative"
+                    class="btn-outline-danger ml-3"
+                    >Alta
+                </button>
+            </p>
+
+            <p *ngIf="turno.citaDTO" [ngClass]="{'none':!(turno.citaDTO.prioridad > 40 && turno.citaDTO.prioridad <=80)}">
+                <button 
+                    *ngIf="turno.citaDTO else alternative"
+                     class="btn-outline-success ml-3"
+                    >Media
+                </button>
+            </p>
+
+            <p *ngIf="turno.citaDTO" [ngClass]="{'none':!(turno.citaDTO.prioridad <= 40)}">
+                <button class="btn-outline-warning ml-3"
+                    *ngIf="turno.citaDTO else alternative"
+                    >Baja
+                </button>
+            </p>
+            
+        </td>
+        <ng-template #alternative>
+            <p> - </p>
+        </ng-template>
+
+        <ng-template #none>
+            <div class="none"> - </div>
+        </ng-template>
+
+</table>

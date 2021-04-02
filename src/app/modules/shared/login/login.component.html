@@ -1,0 +1,29 @@
+<div class = "login">
+    <mat-card class="example-card">
+          <h2 class="mt-2 text-center">Bienvenido</h2>
+        <img mat-card-image class="login-image" src="assets/registros-medicos-p.jpg" alt="medico">
+        <mat-card-content class="mt-3">
+            <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                    <mat-form-field>
+                      <mat-label>Cédula : </mat-label>
+                        <input matInput
+                            type="text"
+                            formControlName="cedula"
+                        >
+                    </mat-form-field>
+                    <div *ngIf="form.get('cedula').hasError('pattern')" class="alert alert-primary" role="alert">
+                        <p>Caracter ingresado no es válido para una cédula</p>
+                    </div>
+                    <mat-form-field>
+                    <mat-label>Constraseña: </mat-label>
+                        <input matInput
+                            type="password"
+                            formControlName="password"
+                        >
+                    </mat-form-field>
+                  <button mat-raised-button color="primary" [disabled]="!form.valid" type="submit" class="btn btn-primary mt-4" >Ingresar</button>
+              </form>
+        </mat-card-content>
+      </mat-card>
+</div>
+

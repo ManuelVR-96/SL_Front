@@ -1,0 +1,38 @@
+<form [formGroup]="form" class="formulario-container" (ngSubmit)="onSubmit($event)" #formDirective = "ngForm">
+    <h1>Añadir síntoma <span class="material-icons md-48 ml-3">add_circle</span> </h1>
+    <mat-form-field>
+        <mat-label>Nombre del síntoma: </mat-label>
+        <input matInput
+            type="text"
+            formControlName="descSintoma"
+        >
+    </mat-form-field>
+
+    <div *ngIf="form.get('descSintoma').hasError('required') && form.get('descSintoma').touched " class="alert alert-danger"  role="alert">
+        <p>Ingrese un nombre para el síntoma</p>
+    </div>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Prioridad: </mat-label>
+        <mat-select formControlName="idPrioridad">
+          <mat-option *ngFor="let prioridad of listaPrioridades" [value]="prioridad.idPrioridadSintoma">{{prioridad.descPrioridadSintoma}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <div *ngIf="form.get('idPrioridad').hasError('required') && form.get('idPrioridad').touched " class="alert alert-danger"  role="alert">
+        <p>Seleccione un nivel de prioridad</p>
+    </div>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Especialidades Asociadas: </mat-label>
+        <mat-select formControlName="especialidadesAsociadas" multiple>
+          <mat-option *ngFor="let especialidad of listaEspecialidades" [value]="especialidad.idEspecialidad">{{especialidad.descripcionEspecialidad}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <div *ngIf="form.get('especialidadesAsociadas').hasError('required') && form.get('especialidadesAsociadas').touched " class="alert alert-danger"  role="alert">
+        <p>Seleccione al menos una especialidad asociada</p>
+    </div>
+
+    <button mat-raised-button color="primary" [disabled]="!form.valid" type="submit" class="btn btn-primary" style="display: block;">Agregar Síntoma</button>
+</form>

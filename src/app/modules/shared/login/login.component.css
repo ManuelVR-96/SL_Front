@@ -1,0 +1,55 @@
+button:disabled {
+    background: red;
+  }
+
+.example-card {
+    background-color: #41e1b1;
+    border: gray 5px;
+    border-radius: 10px;
+    box-shadow: 10px gray;
+    display: flex;
+    flex-direction: column;
+    min-height: 450px;
+    max-width: 300px;
+    text-align: center;
+    /* margin: 0px auto;
+    margin-top: ; */
+    
+}
+
+h2 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: large;
+    font-weight: bold;
+
+}
+
+input.mat-input {
+    color: white;
+}
+
+.login {
+    align-items: center;
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%,rgba(2,0,36,1) 100%);
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: center;
+    position:fixed;
+    width: 100vw;  
+}
+
+.login-image {
+    border-radius: 50%; 
+    margin: 0px auto;
+    max-height: 50%;
+    max-width: 50%;
+    
+}
+mat-card-content {
+    align-items: center;
+    justify-content: center;
+}
+
+

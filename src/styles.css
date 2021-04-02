@@ -1,0 +1,18 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.alert {
+    font-weight: bold;
+    margin: 0px auto;
+    margin-top: 0px;
+    margin-bottom: 10px;
+    max-height: 35px;
+    max-width: 400px;
+    text-align: center;
+}
+
+.alert p {
+    line-height: 20% !important;
+}

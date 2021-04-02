@@ -1,0 +1,16 @@
+.alert {
+    margin-bottom: 5px
+}
+
+.formulario-container {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+    padding: 5px;
+    
+}
+
+mat-form-field {
+    width: 400px
+}

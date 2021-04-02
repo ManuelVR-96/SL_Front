@@ -1,0 +1,51 @@
+/* .alert {
+    font-weight: bold;
+    margin: 0px auto;
+    margin-top: 0px;
+    margin-bottom: 2px;
+    max-height: 30px;
+    max-width: 400px;
+    text-align: center;
+}
+
+.alert p {
+    line-height: 20%;
+} */
+
+.example-container{
+    text-align: center
+}
+
+h1 {
+    margin-bottom: 10px;
+}
+mat-form-field{
+    display: block;
+    margin: 8px;
+}
+
+::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
+    background-color: white;
+    border: gray solid 1px;
+    border-radius: 10px;  
+}
+
+.contenedor {
+    background-color: rgba(255, 255, 255);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    margin:1rem auto;
+    max-width: 600px;
+    margin-top: 50px;
+    padding: 25px;
+} 
+::ng-deep .mat-calendar-body-disabled > 
+.mat-calendar-body-cell-content {
+    background-color: rgb(211, 198, 198);
+}
+
+::ng-deep .mat-calendar-body-disabled > 
+.mat-calendar-body-cell-content:not(.mat-calendar-body-selected):not(.mat-calendar-body-comparison-identical){
+    color:black;
+  }

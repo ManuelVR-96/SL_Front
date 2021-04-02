@@ -1,0 +1,43 @@
+
+    <div class="contenedor">
+      <h1>Abrir Agenda <i class="material-icons md-48">calendar_today</i></h1>
+      <form [formGroup]="form" (ngSubmit)="onSubmit()" #formDirective="ngForm">
+        <mat-form-field>
+            <mat-label>Centro Médico</mat-label>
+            <mat-select placeholder="Centro Médico" formControlName="idCentroMedico">
+              <mat-option *ngFor="let cm of listaCentros" [value]="cm.idCentroMedico">
+                {{cm.nombreCentroMedico}}
+              </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <div *ngIf="form.get('idCentroMedico').hasError('required') && form.get('idCentroMedico').touched " class="alert alert-danger" role="alert">
+          <p>Seleccione un centro médico</p>
+        </div>
+        <mat-form-field>
+            <mat-label>Médico</mat-label>
+            <mat-select placeholder="Operaciones" formControlName="idMedico" [disabled]="!form.controls.idCentroMedico.valid">
+              <mat-option *ngFor="let medico of listaMedicos" [value]="medico.idMedico">
+                {{medico.nombre}} {{medico.apellidos}} - {{medico.nombreEspecialidad}}
+              </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <div *ngIf="form.get('idMedico').hasError('required') && form.get('idMedico').touched " class="alert alert-danger" role="alert">
+          <p>Seleccione un médico</p>
+        </div>
+        
+        <mat-form-field appearance="fill">
+            <mat-label>Ingrese un rango de fechas en el calendario</mat-label>
+            <mat-date-range-input [rangePicker]="picker" [min]="minDate" [dateFilter]="myFilter" [disabled]="!form.controls.idMedico.valid">
+              <input matStartDate formControlName="fechaInicio" placeholder="Start date" >
+              <input matEndDate formControlName="fechaFinal" placeholder="End date">
+            </mat-date-range-input>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-date-range-picker #picker></mat-date-range-picker>
+          
+            <mat-error *ngIf="form.controls.fechaInicio.hasError('matStartDateInvalid')">Fecha de inicio inválida</mat-error>
+            <mat-error *ngIf="form.controls.fechaFinal.hasError('matEndDateInvalid')">Fecha de fin inválida</mat-error>
+        </mat-form-field>
+        <button mat-raised-button color="primary" [disabled]="!form.valid" type="submit" class="btn btn-primary" style="display: block;">Abrir Agenda</button>
+      </form>
+      
+    </div>
